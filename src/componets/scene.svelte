@@ -55,6 +55,8 @@
       //this.camera.position.set(0, 0, 0);
       // this.warpSpeed("-ground", "-sky");
       await this.warpSpeed("-sky", "-ground");
+      // lights.castShadow = true;
+      console.log(this.lights);
       this.camera.position.set(8.5, 4, 1.2);
       this.camera.rotation.set(-1.5, 1.2, 1.5);
 
@@ -73,6 +75,8 @@
         this.island = new ExtendedObject3D();
         this.island.name = "scene";
         this.island.add(scene);
+        this.island.castShadow = true; // Permitir que el objeto proyecte sombras
+        this.island.receiveShadow = true;
         this.add.existing(this.island);
 
         // add animations
@@ -86,33 +90,33 @@
         // });
 
         this.island.traverse((child) => {
+          child.castShadow = child.receiveShadow = true;
+          // child.material.metalness = 0;
+          // child.material.roughness = 1;
+
           if (child.name == "RockA") {
-            this.roackA = child
-            console.log(this.roackA)
+            this.roackA = child;
+            console.log(this.roackA);
           }
           // if (child.isMesh) {
-            
-            
 
-            // child.castShadow = child.receiveShadow = false;
-            // child.material.metalness = 0;
-            // child.material.roughness = 1;
-
-            // if (/mesh/i.test(child.name)) {
-            //   this.physics.add.existing(child, {
-            //     shape: "concave",
-            //     mass: 0,
-            //     collisionFlags: 1,
-            //     autoCenter: false,
-            //   });
-            //   child.body.setAngularFactor(0, 0, 0);
-            //   child.body.setLinearFactor(0, 0, 0);
-            // }
+          // if (/mesh/i.test(child.name)) {
+          //   this.physics.add.existing(child, {
+          //     shape: "concave",
+          //     mass: 0,
+          //     collisionFlags: 1,
+          //     autoCenter: false,
+          //   });
+          //   child.body.setAngularFactor(0, 0, 0);
+          //   child.body.setLinearFactor(0, 0, 0);
+          // }
           // }
         });
       };
 
       addBook();
+
+      // this.lights.directionalLight.castShadow = enabled
 
       function manejarEventoScroll(event) {
         // console.log("Position", camera.position)
@@ -149,12 +153,9 @@
       const time = Date.now() * 0.001; // Obtener el tiempo actual en segundos
       const deltaY = Math.sin(time) * amplitude; // Calcular el cambio en el eje Y usando la función seno
 
-
-      if(this.roackA) {
+      if (this.roackA) {
         this.roackA.position.y = initialY + deltaY;
       }
-
-
 
       // Actualizar la posición del objeto en el eje Y
 
