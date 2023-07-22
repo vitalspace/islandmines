@@ -152,7 +152,6 @@
 
       if(this.roackA) {
         this.roackA.position.y = initialY + deltaY;
-        console.log(this.roackA.posicion)
       }
 
 
