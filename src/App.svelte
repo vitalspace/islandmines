@@ -1,17 +1,28 @@
 <!-- App.svelte -->
-<script>
+<script lang="ts">
   import { Router, Link, Route } from "svelte-routing";
+  import { idBlockChainUser } from "./stores/stores";
   import Home from "./routes/Home.svelte";
-  // import About from "./routes/About.svelte";
-  // import Blog from "./routes/Blog.svelte";
+  import Play from "./routes/Play.svelte";
+  import Buy from "./routes/Buy.svelte";
+  import Whitepaper from "./routes/Whitepaper.svelte";
+  import Community from "./routes/Community.svelte";
 
   export let url = "/";
 </script>
 
 <Router {url}>
   <header class="relative z-10">
-    <nav class="hidden container mx-auto md:flex justify-end py-10 text-white">
-      <ul class="flex space-x-10 pr-32">
+    <nav
+      class="hidden container mx-auto md:flex justify-between py-10 text-white items-center"
+    >
+      <h2 class="pl-2">
+        Welcome back Friend
+        {#if $idBlockChainUser}
+          {$idBlockChainUser.slice(0, 20)}
+        {/if}
+      </h2>
+      <ul class="flex space-x-10">
         <li><Link class="cursor-pointer" to="/">Home</Link></li>
         <li><Link class="cursor-pointer" to="/play">Play</Link></li>
         <li><Link class="cursor-pointer" to="/buy">Buy $CIM</Link></li>
@@ -30,5 +41,9 @@
   </header>
   <div>
     <Route path="/"><Home /></Route>
+    <Route path="/play"><Play /></Route>
+    <Route path="/buy"><Buy /></Route>
+    <Route path="/whitepaper"><Whitepaper /></Route>
+    <Route path="/community"><Community /></Route>
   </div>
 </Router>
