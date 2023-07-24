@@ -1,18 +1,18 @@
 <!-- App.svelte -->
 <script lang="ts">
   import { Router, Link, Route } from "svelte-routing";
-  import { idBlockChainUser } from "./stores/stores";
+  import { idBlockChainUser, isTheMenuTransparent } from "./stores/stores";
   import Home from "./routes/Home.svelte";
   import Play from "./routes/Play.svelte";
   import Buy from "./routes/Buy.svelte";
   import Whitepaper from "./routes/Whitepaper.svelte";
   import Community from "./routes/Community.svelte";
 
-  export let url = "/";
+
 </script>
 
-<Router {url}>
-  <header class="relative z-10">
+<Router>
+  <header class="fixed w-full {$isTheMenuTransparent ?  "bg-none" : "bg-gray-800"} z-10">
     <nav
       class="hidden container mx-auto md:flex justify-between py-10 text-white items-center"
     >

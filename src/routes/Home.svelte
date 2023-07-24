@@ -1,6 +1,8 @@
 <script lang="ts">
-  import Scene from "../componets/scene.svelte";
+  import Scene from "../componets/index/scene.svelte";
   import ButtonSingUp from "../componets/index/singup.svelte";
+  import { isTheMenuTransparent } from "../stores/stores";
+  $isTheMenuTransparent = true;
 </script>
 
 <section
@@ -13,7 +15,7 @@
       Don’t miss out on the release of our new NFT. Sign up below to receive
       updates when we go live.
     </p>
-    <ButtonSingUp/>
+    <ButtonSingUp />
   </div>
   <div id="test" class="cursor-pointer hidden md:flex">
     <Scene canvasWidth={800} canvasheith={500} />
