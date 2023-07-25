@@ -68,8 +68,8 @@
       {#if item.value !== 6}
         <button
           on:click={handleClick(item.value)}
-          class="flex w-full items-center space-x-4 px-8 py-2 hover:bg-slate-700
-          {activeTabValue === item.value ? 'bg-purple-500' : ''}"
+          class="flex w-full items-center space-x-4 px-8 py-2
+          {activeTabValue === item.value ? 'bg-purple-500' : 'hover:bg-slate-700'}"
         >
           <img class="h-8 w-8" src={item.icon} alt="" />
           <span>{item.label}</span>
