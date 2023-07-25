@@ -75,7 +75,6 @@
           <span>{item.label}</span>
         </button>
       {/if}
-
       {#if item.value == 6}
         <div class="text-center w-full">
           <header class="py-10">
@@ -85,7 +84,6 @@
       {/if}
     {/each}
   </div>
-  {activeTabValue}
 </div>
 
 {#each items as item}
