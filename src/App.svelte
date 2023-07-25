@@ -7,8 +7,6 @@
   import Buy from "./routes/Buy.svelte";
   import Whitepaper from "./routes/Whitepaper.svelte";
   import Community from "./routes/Community.svelte";
-
-
 </script>
 
 <Router>
